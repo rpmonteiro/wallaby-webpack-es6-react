@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { PropTypes, Component } from 'react';
 import Quill from './Quill';
+import Delta                                    from 'quill-delta';
+import ReactDOM                                 from 'react-dom';
 
-let Label = React.createClass({
-  render: function () {
-    return <div>
-      Wallaby.js{' ' + (this.props ? this.props.children : 'unexpected')}
-    </div>;
+export default class Label extends Component {
+  render() {
+    return (
+      <div>
+        Wallaby.js{' ' + (this.props ? this.props.children : 'unexpected')}
+      </div>
+    )
   }
-});
-
-export default Label;
+}
