@@ -12,8 +12,6 @@ import List, { ListItem } from 'quill/formats/list';
 
 Quill.register({
   'modules/toolbar':    Toolbar,
-  'themes/full':        FullTheme,
-  'themes/simple':      SimpleTheme,
   'formats/underline':  Underline,
   'formats/bold':       Bold,
   'formats/italic':     Italic,

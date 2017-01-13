@@ -1,38 +1,32 @@
-var wallabyWebpack = require('wallaby-webpack');
-
 module.exports = function (wallaby) {
-
-  var webpackPostprocessor = wallabyWebpack({
-    // webpack options
-
-    externals: {
-      // Use external version of React instead of rebuilding it
-      "react": "React"
-    },
-    resolve: {
-      extensions: ['', '.js', '.jsx']
-    }
-  });
-
   return {
     files: [
-      {pattern: 'node_modules/react/dist/react-with-addons.js', instrument: false},
-      {pattern: 'src/**/*.js*', load: false}
+      'src/**/*.js*',
+      'setup.js',
+      {pattern: 'test/*.js*', ignore: true}
     ],
 
     tests: [
-      {pattern: 'test/**/*Spec.js*', load: false}
+      'test/**/*.js*'
     ],
 
     compilers: {
+      '**/*.ts?(x)': wallaby.compilers.typeScript({module: 'commonjs'}),
       '**/*.js*': wallaby.compilers.babel()
     },
+    
+    env: {
+      type: 'node',
+      params: {
+        env: 'LOCAL_PATH=' + process.cwd()
+      }
+    },
 
-    postprocessor: webpackPostprocessor,
-
+    testFramework: 'mocha',
+    
     setup: function () {
-      window.__moduleBundler.loadTests();
-      require('./setup/setup');
+      require.extensions['.jsx'] = require.extensions['.js'];
+      require('./setup');
       require('babel-register')({ only: /quill/ });
     }
   };

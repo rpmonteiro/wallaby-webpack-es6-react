@@ -1,6 +1,8 @@
-import React from 'react';
+import React     from 'react';
 import TestUtils from 'react/lib/ReactTestUtils'
-import Label from '../src/Label'
+import Label     from '../src/Label'
+import expect    from 'expect';
+
 
 describe('Label', function () {
 

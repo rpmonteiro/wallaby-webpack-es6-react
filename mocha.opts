@@ -1,4 +1,4 @@
 --compilers js:babel-register
---require ./setup/setup.js
+--require ./setup.js
 --reporter dot
 ./test/*.js*
