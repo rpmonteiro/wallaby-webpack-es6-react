@@ -23,6 +23,9 @@ global.window.requestAnimationFrame = () => 0;
 global.window.cancelAnimationFrame = () => false;
 global.Node = {};
 
+const noop = () => 1;
+require.extensions['.svg'] = noop;
+
 const exposedProperties = ['window', 'navigator', 'document'];
 Object.keys(document.defaultView).forEach((property) => {
   if (typeof global[property] === 'undefined') {
