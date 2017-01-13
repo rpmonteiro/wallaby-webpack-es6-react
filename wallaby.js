@@ -32,6 +32,8 @@ module.exports = function (wallaby) {
 
     setup: function () {
       window.__moduleBundler.loadTests();
+      require('./setup/setup');
+      require('babel-register')({ only: /quill/ });
     }
   };
 };

@@ -1,4 +1,5 @@
 import React from 'react';
+import Quill from './Quill';
 
 let Label = React.createClass({
   render: function () {
